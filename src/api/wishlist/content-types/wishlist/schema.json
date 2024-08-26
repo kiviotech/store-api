@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "wishlists",
+  "info": {
+    "singularName": "wishlist",
+    "pluralName": "wishlists",
+    "displayName": "Wishlist",
+    "description": "User's wishlist of desired products"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+   
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "inversedBy": "wishlists"
+    },
+    "createdAt": {
+      "type": "datetime"
+    },
+    "updatedAt": {
+      "type": "datetime"
+    }
+  }
+}

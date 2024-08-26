@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_skus",
+  "info": {
+    "singularName": "product-sku",
+    "pluralName": "product-skus",
+    "displayName": "Product SKU",
+    "description": "Stock Keeping Units for product variations"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "sku": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "price": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "productSkus"
+    },
+    "attributes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-attribute.product-attribute",
+      "inversedBy": "productSkus"
+    }
+  }
+}

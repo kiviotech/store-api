@@ -4,42 +4,68 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "product",
-    "description": ""
+    "displayName": "Product",
+    "description": "Product information for the e-commerce platform"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "desc": {
+    "description": {
+      "type": "text"
+    },
+    "summary": {
       "type": "text"
     },
     "price": {
-      "type": "integer",
+      "type": "decimal",
       "required": true,
       "min": 0
     },
-    "stock_quantity": {
-      "type": "integer"
-    },
-    "rating": {
-      "type": "decimal"
-    },
-    "main_image": {
+    "cover": {
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "subCategories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::subcategory.subcategory",
+      "inversedBy": "products"
+    },
+    "productAttributes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-attribute.product-attribute",
+      "mappedBy": "product"
+    },
+    "productSkus": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-sku.product-sku",
+      "mappedBy": "product"
     },
     "slug": {
-      "type": "uid"
+      "type": "uid",
+      "targetField": "name"
+    },
+    "wishlists": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::wishlist.wishlist",
+      "mappedBy": "products"
     }
   }
 }
