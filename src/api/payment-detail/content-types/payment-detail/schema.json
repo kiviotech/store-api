@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payment_details",
+  "info": {
+    "singularName": "payment-detail",
+    "pluralName": "payment-details",
+    "displayName": "Payment Detail",
+    "description": "Details of payments associated with orders"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "orderDetail": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::order-detail.order-detail",
+      "inversedBy": "paymentDetail"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true,
+      "min": 0
+    },
+    "provider": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "completed",
+        "failed",
+        "refunded"
+      ],
+      "default": "pending"
+    },
+    "transactionId": {
+      "type": "string",
+      "unique": true
+    },
+    "paymentMethod": {
+      "type": "string"
+    },
+    "paymentDate": {
+      "type": "datetime"
+    },
+    "createdAt": {
+      "type": "datetime"
+    },
+    "updatedAt": {
+      "type": "datetime"
+    }
+  }
+}
