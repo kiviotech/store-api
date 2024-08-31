@@ -813,10 +813,10 @@ export interface ApiAddressAddress extends Schema.CollectionType {
     singularName: 'address';
     pluralName: 'addresses';
     displayName: 'Address';
+    description: '';
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
     title: Attribute.String;
@@ -832,6 +832,8 @@ export interface ApiAddressAddress extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    ratingsCount: Attribute.String;
+    rating: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -969,6 +971,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::product.product'
     >;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1220,6 +1223,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::wishlist.wishlist'
     >;
+    ratingsCount: Attribute.String;
+    rating: Attribute.Integer;
+    topReview: Attribute.Text;
+    demoVideo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1362,6 +1369,7 @@ export interface ApiSubcategorySubcategory extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
+    cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

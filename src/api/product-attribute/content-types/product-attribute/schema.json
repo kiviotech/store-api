@@ -14,7 +14,10 @@
   "attributes": {
     "type": {
       "type": "enumeration",
-      "enum": ["color", "size"],
+      "enum": [
+        "color",
+        "size"
+      ],
       "required": true
     },
     "value": {

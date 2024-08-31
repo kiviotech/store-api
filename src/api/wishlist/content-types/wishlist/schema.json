@@ -12,7 +12,6 @@
     "comment": ""
   },
   "attributes": {
-   
     "products": {
       "type": "relation",
       "relation": "manyToMany",
