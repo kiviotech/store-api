@@ -8,11 +8,15 @@
     "description": "Shopping cart for users"
   },
   "options": {
-    "draftAndPublish": false,
-    "comment": ""
+    "draftAndPublish": false
   },
   "attributes": {
-  
+    "createdAt": {
+      "type": "datetime"
+    },
+    "updatedAt": {
+      "type": "datetime"
+    },
     "total": {
       "type": "decimal",
       "default": 0,
@@ -24,11 +28,10 @@
       "target": "api::cart-item.cart-item",
       "mappedBy": "cart"
     },
-    "createdAt": {
-      "type": "datetime"
-    },
-    "updatedAt": {
-      "type": "datetime"
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }

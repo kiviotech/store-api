@@ -861,9 +861,10 @@ export interface ApiCartCart extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     total: Attribute.Decimal &
       Attribute.SetMinMax<
         {
@@ -877,8 +878,11 @@ export interface ApiCartCart extends Schema.CollectionType {
       'oneToMany',
       'api::cart-item.cart-item'
     >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
+    users_permissions_user: Attribute.Relation<
+      'api::cart.cart',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::cart.cart', 'oneToOne', 'admin::user'> &
