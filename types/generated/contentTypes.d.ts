@@ -775,11 +775,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::address.address'
     >;
-    cart: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::cart.cart'
-    >;
     wishlist: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
@@ -789,6 +784,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'oneToMany',
       'api::order-detail.order-detail'
+    >;
+    cart: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::cart.cart'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -900,9 +900,10 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     cart: Attribute.Relation<
       'api::cart-item.cart-item',
       'manyToOne',
@@ -934,8 +935,6 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
         },
         number
       >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::cart-item.cart-item',
       'oneToOne',
@@ -1231,6 +1230,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     rating: Attribute.Integer;
     topReview: Attribute.Text;
     demoVideo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    wishlist_items: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::wishlist-item.wishlist-item'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1402,16 +1406,25 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     products: Attribute.Relation<
       'api::wishlist.wishlist',
       'manyToMany',
       'api::product.product'
     >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
+    user: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    wishlist_items: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToMany',
+      'api::wishlist-item.wishlist-item'
+    >;
     createdBy: Attribute.Relation<
       'api::wishlist.wishlist',
       'oneToOne',
@@ -1420,6 +1433,45 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::wishlist.wishlist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWishlistItemWishlistItem extends Schema.CollectionType {
+  collectionName: 'wishlist_items';
+  info: {
+    singularName: 'wishlist-item';
+    pluralName: 'wishlist-items';
+    displayName: 'Wishlist Item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
+      'manyToOne',
+      'api::product.product'
+    >;
+    wishlist: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
+      'manyToOne',
+      'api::wishlist.wishlist'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
       'oneToOne',
       'admin::user'
     > &
@@ -1457,6 +1509,7 @@ declare module '@strapi/types' {
       'api::product-sku.product-sku': ApiProductSkuProductSku;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::wishlist.wishlist': ApiWishlistWishlist;
+      'api::wishlist-item.wishlist-item': ApiWishlistItemWishlistItem;
     }
   }
 }

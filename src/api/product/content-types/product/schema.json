@@ -87,6 +87,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "wishlist_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wishlist-item.wishlist-item",
+      "mappedBy": "product"
     }
   }
 }
