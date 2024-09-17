@@ -1221,18 +1221,13 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product-sku.product-sku'
     >;
     slug: Attribute.UID<'api::product.product', 'name'>;
-    wishlists: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::wishlist.wishlist'
-    >;
     ratingsCount: Attribute.String;
     rating: Attribute.Integer;
     topReview: Attribute.Text;
     demoVideo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    wishlist_items: Attribute.Relation<
+    wishlist_item: Attribute.Relation<
       'api::product.product',
-      'oneToMany',
+      'oneToOne',
       'api::wishlist-item.wishlist-item'
     >;
     createdAt: Attribute.DateTime;
@@ -1410,11 +1405,6 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
   attributes: {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    products: Attribute.Relation<
-      'api::wishlist.wishlist',
-      'manyToMany',
-      'api::product.product'
-    >;
     user: Attribute.Relation<
       'api::wishlist.wishlist',
       'oneToOne',
@@ -1446,6 +1436,7 @@ export interface ApiWishlistItemWishlistItem extends Schema.CollectionType {
     singularName: 'wishlist-item';
     pluralName: 'wishlist-items';
     displayName: 'Wishlist Item';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1453,7 +1444,7 @@ export interface ApiWishlistItemWishlistItem extends Schema.CollectionType {
   attributes: {
     product: Attribute.Relation<
       'api::wishlist-item.wishlist-item',
-      'manyToOne',
+      'oneToOne',
       'api::product.product'
     >;
     wishlist: Attribute.Relation<
@@ -1461,6 +1452,7 @@ export interface ApiWishlistItemWishlistItem extends Schema.CollectionType {
       'manyToOne',
       'api::wishlist.wishlist'
     >;
+    total: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -63,12 +63,6 @@
       "type": "uid",
       "targetField": "name"
     },
-    "wishlists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::wishlist.wishlist",
-      "mappedBy": "products"
-    },
     "ratingsCount": {
       "type": "string"
     },
@@ -88,9 +82,9 @@
       "type": "media",
       "multiple": false
     },
-    "wishlist_items": {
+    "wishlist_item": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::wishlist-item.wishlist-item",
       "mappedBy": "product"
     }

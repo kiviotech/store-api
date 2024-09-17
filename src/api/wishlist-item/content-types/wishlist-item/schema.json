@@ -4,7 +4,8 @@
   "info": {
     "singularName": "wishlist-item",
     "pluralName": "wishlist-items",
-    "displayName": "Wishlist Item"
+    "displayName": "Wishlist Item",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,15 +14,18 @@
   "attributes": {
     "product": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::product.product",
-      "inversedBy": "wishlist_items"
+      "inversedBy": "wishlist_item"
     },
     "wishlist": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::wishlist.wishlist",
       "inversedBy": "wishlist_items"
+    },
+    "total": {
+      "type": "string"
     }
   }
 }

@@ -17,12 +17,6 @@
     "updatedAt": {
       "type": "datetime"
     },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "inversedBy": "wishlists"
-    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
