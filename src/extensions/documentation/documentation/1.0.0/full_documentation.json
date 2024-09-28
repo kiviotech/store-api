@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-17T08:29:03.964Z"
+    "x-generation-date": "2024-09-25T16:04:35.726Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2307,6 +2307,14 @@
                                 "attributes": {
                                   "type": "object",
                                   "properties": {
+                                    "createdAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
                                     "orderItems": {
                                       "type": "object",
                                       "properties": {
@@ -2566,17 +2574,6 @@
                                         }
                                       }
                                     },
-                                    "orderNumber": {
-                                      "type": "string"
-                                    },
-                                    "createdAt": {
-                                      "type": "string",
-                                      "format": "date-time"
-                                    },
-                                    "updatedAt": {
-                                      "type": "string",
-                                      "format": "date-time"
-                                    },
                                     "user": {
                                       "type": "object",
                                       "properties": {
@@ -2593,6 +2590,15 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "razorpayOrderId": {
+                                      "type": "string"
+                                    },
+                                    "razorpayPaymentId": {
+                                      "type": "string"
+                                    },
+                                    "razorpaySignature": {
+                                      "type": "string"
                                     },
                                     "createdBy": {
                                       "type": "object",
@@ -5208,6 +5214,14 @@
                                                           "attributes": {
                                                             "type": "object",
                                                             "properties": {
+                                                              "createdAt": {
+                                                                "type": "string",
+                                                                "format": "date-time"
+                                                              },
+                                                              "updatedAt": {
+                                                                "type": "string",
+                                                                "format": "date-time"
+                                                              },
                                                               "orderItems": {
                                                                 "type": "object",
                                                                 "properties": {
@@ -5467,17 +5481,6 @@
                                                                   }
                                                                 }
                                                               },
-                                                              "orderNumber": {
-                                                                "type": "string"
-                                                              },
-                                                              "createdAt": {
-                                                                "type": "string",
-                                                                "format": "date-time"
-                                                              },
-                                                              "updatedAt": {
-                                                                "type": "string",
-                                                                "format": "date-time"
-                                                              },
                                                               "user": {
                                                                 "type": "object",
                                                                 "properties": {
@@ -5494,6 +5497,15 @@
                                                                     }
                                                                   }
                                                                 }
+                                                              },
+                                                              "razorpayOrderId": {
+                                                                "type": "string"
+                                                              },
+                                                              "razorpayPaymentId": {
+                                                                "type": "string"
+                                                              },
+                                                              "razorpaySignature": {
+                                                                "type": "string"
                                                               },
                                                               "createdBy": {
                                                                 "type": "object",
@@ -7894,6 +7906,14 @@
                                                                                               "attributes": {
                                                                                                 "type": "object",
                                                                                                 "properties": {
+                                                                                                  "createdAt": {
+                                                                                                    "type": "string",
+                                                                                                    "format": "date-time"
+                                                                                                  },
+                                                                                                  "updatedAt": {
+                                                                                                    "type": "string",
+                                                                                                    "format": "date-time"
+                                                                                                  },
                                                                                                   "orderItems": {
                                                                                                     "type": "object",
                                                                                                     "properties": {
@@ -8153,17 +8173,6 @@
                                                                                                       }
                                                                                                     }
                                                                                                   },
-                                                                                                  "orderNumber": {
-                                                                                                    "type": "string"
-                                                                                                  },
-                                                                                                  "createdAt": {
-                                                                                                    "type": "string",
-                                                                                                    "format": "date-time"
-                                                                                                  },
-                                                                                                  "updatedAt": {
-                                                                                                    "type": "string",
-                                                                                                    "format": "date-time"
-                                                                                                  },
                                                                                                   "user": {
                                                                                                     "type": "object",
                                                                                                     "properties": {
@@ -8180,6 +8189,15 @@
                                                                                                         }
                                                                                                       }
                                                                                                     }
+                                                                                                  },
+                                                                                                  "razorpayOrderId": {
+                                                                                                    "type": "string"
+                                                                                                  },
+                                                                                                  "razorpayPaymentId": {
+                                                                                                    "type": "string"
+                                                                                                  },
+                                                                                                  "razorpaySignature": {
+                                                                                                    "type": "string"
                                                                                                   },
                                                                                                   "createdBy": {
                                                                                                     "type": "object",
@@ -10305,6 +10323,14 @@
                                                                                                 "attributes": {
                                                                                                   "type": "object",
                                                                                                   "properties": {
+                                                                                                    "createdAt": {
+                                                                                                      "type": "string",
+                                                                                                      "format": "date-time"
+                                                                                                    },
+                                                                                                    "updatedAt": {
+                                                                                                      "type": "string",
+                                                                                                      "format": "date-time"
+                                                                                                    },
                                                                                                     "orderItems": {
                                                                                                       "type": "object",
                                                                                                       "properties": {
@@ -10564,17 +10590,6 @@
                                                                                                         }
                                                                                                       }
                                                                                                     },
-                                                                                                    "orderNumber": {
-                                                                                                      "type": "string"
-                                                                                                    },
-                                                                                                    "createdAt": {
-                                                                                                      "type": "string",
-                                                                                                      "format": "date-time"
-                                                                                                    },
-                                                                                                    "updatedAt": {
-                                                                                                      "type": "string",
-                                                                                                      "format": "date-time"
-                                                                                                    },
                                                                                                     "user": {
                                                                                                       "type": "object",
                                                                                                       "properties": {
@@ -10591,6 +10606,15 @@
                                                                                                           }
                                                                                                         }
                                                                                                       }
+                                                                                                    },
+                                                                                                    "razorpayOrderId": {
+                                                                                                      "type": "string"
+                                                                                                    },
+                                                                                                    "razorpayPaymentId": {
+                                                                                                      "type": "string"
+                                                                                                    },
+                                                                                                    "razorpaySignature": {
+                                                                                                      "type": "string"
                                                                                                     },
                                                                                                     "createdBy": {
                                                                                                       "type": "object",
@@ -11748,9 +11772,6 @@
                 ],
                 "example": "string or id"
               },
-              "orderNumber": {
-                "type": "string"
-              },
               "user": {
                 "oneOf": [
                   {
@@ -11761,52 +11782,15 @@
                   }
                 ],
                 "example": "string or id"
-              }
-            }
-          }
-        }
-      },
-      "OrderDetailListResponseDataItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "number"
-          },
-          "attributes": {
-            "$ref": "#/components/schemas/OrderDetail"
-          }
-        }
-      },
-      "OrderDetailListResponse": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/OrderDetailListResponseDataItem"
-            }
-          },
-          "meta": {
-            "type": "object",
-            "properties": {
-              "pagination": {
-                "type": "object",
-                "properties": {
-                  "page": {
-                    "type": "integer"
-                  },
-                  "pageSize": {
-                    "type": "integer",
-                    "minimum": 25
-                  },
-                  "pageCount": {
-                    "type": "integer",
-                    "maximum": 1
-                  },
-                  "total": {
-                    "type": "integer"
-                  }
-                }
+              },
+              "razorpayOrderId": {
+                "type": "string"
+              },
+              "razorpayPaymentId": {
+                "type": "string"
+              },
+              "razorpaySignature": {
+                "type": "string"
               }
             }
           }
@@ -11818,6 +11802,14 @@
           "total"
         ],
         "properties": {
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
           "orderItems": {
             "type": "object",
             "properties": {
@@ -11844,6 +11836,14 @@
                                 "attributes": {
                                   "type": "object",
                                   "properties": {
+                                    "createdAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
                                     "orderItems": {
                                       "type": "object",
                                       "properties": {
@@ -14319,17 +14319,6 @@
                                         }
                                       }
                                     },
-                                    "orderNumber": {
-                                      "type": "string"
-                                    },
-                                    "createdAt": {
-                                      "type": "string",
-                                      "format": "date-time"
-                                    },
-                                    "updatedAt": {
-                                      "type": "string",
-                                      "format": "date-time"
-                                    },
                                     "user": {
                                       "type": "object",
                                       "properties": {
@@ -14346,6 +14335,15 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "razorpayOrderId": {
+                                      "type": "string"
+                                    },
+                                    "razorpayPaymentId": {
+                                      "type": "string"
+                                    },
+                                    "razorpaySignature": {
+                                      "type": "string"
                                     },
                                     "createdBy": {
                                       "type": "object",
@@ -14529,17 +14527,6 @@
               }
             }
           },
-          "orderNumber": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
           "user": {
             "type": "object",
             "properties": {
@@ -14556,6 +14543,15 @@
                 }
               }
             }
+          },
+          "razorpayOrderId": {
+            "type": "string"
+          },
+          "razorpayPaymentId": {
+            "type": "string"
+          },
+          "razorpaySignature": {
+            "type": "string"
           },
           "createdBy": {
             "type": "object",
@@ -14743,6 +14739,14 @@
                   "attributes": {
                     "type": "object",
                     "properties": {
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "orderItems": {
                         "type": "object",
                         "properties": {
@@ -17323,17 +17327,6 @@
                           }
                         }
                       },
-                      "orderNumber": {
-                        "type": "string"
-                      },
-                      "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
                       "user": {
                         "type": "object",
                         "properties": {
@@ -17350,6 +17343,15 @@
                             }
                           }
                         }
+                      },
+                      "razorpayOrderId": {
+                        "type": "string"
+                      },
+                      "razorpayPaymentId": {
+                        "type": "string"
+                      },
+                      "razorpaySignature": {
+                        "type": "string"
                       },
                       "createdBy": {
                         "type": "object",
@@ -17621,6 +17623,14 @@
                   "attributes": {
                     "type": "object",
                     "properties": {
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
                       "orderItems": {
                         "type": "object",
                         "properties": {
@@ -20201,17 +20211,6 @@
                           }
                         }
                       },
-                      "orderNumber": {
-                        "type": "string"
-                      },
-                      "createdAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
-                      "updatedAt": {
-                        "type": "string",
-                        "format": "date-time"
-                      },
                       "user": {
                         "type": "object",
                         "properties": {
@@ -20228,6 +20227,15 @@
                             }
                           }
                         }
+                      },
+                      "razorpayOrderId": {
+                        "type": "string"
+                      },
+                      "razorpayPaymentId": {
+                        "type": "string"
+                      },
+                      "razorpaySignature": {
+                        "type": "string"
                       },
                       "createdBy": {
                         "type": "object",
@@ -22204,6 +22212,14 @@
                                                                                                 "attributes": {
                                                                                                   "type": "object",
                                                                                                   "properties": {
+                                                                                                    "createdAt": {
+                                                                                                      "type": "string",
+                                                                                                      "format": "date-time"
+                                                                                                    },
+                                                                                                    "updatedAt": {
+                                                                                                      "type": "string",
+                                                                                                      "format": "date-time"
+                                                                                                    },
                                                                                                     "orderItems": {
                                                                                                       "type": "object",
                                                                                                       "properties": {
@@ -22463,17 +22479,6 @@
                                                                                                         }
                                                                                                       }
                                                                                                     },
-                                                                                                    "orderNumber": {
-                                                                                                      "type": "string"
-                                                                                                    },
-                                                                                                    "createdAt": {
-                                                                                                      "type": "string",
-                                                                                                      "format": "date-time"
-                                                                                                    },
-                                                                                                    "updatedAt": {
-                                                                                                      "type": "string",
-                                                                                                      "format": "date-time"
-                                                                                                    },
                                                                                                     "user": {
                                                                                                       "type": "object",
                                                                                                       "properties": {
@@ -22490,6 +22495,15 @@
                                                                                                           }
                                                                                                         }
                                                                                                       }
+                                                                                                    },
+                                                                                                    "razorpayOrderId": {
+                                                                                                      "type": "string"
+                                                                                                    },
+                                                                                                    "razorpayPaymentId": {
+                                                                                                      "type": "string"
+                                                                                                    },
+                                                                                                    "razorpaySignature": {
+                                                                                                      "type": "string"
                                                                                                     },
                                                                                                     "createdBy": {
                                                                                                       "type": "object",
@@ -25684,6 +25698,14 @@
                                                                     "attributes": {
                                                                       "type": "object",
                                                                       "properties": {
+                                                                        "createdAt": {
+                                                                          "type": "string",
+                                                                          "format": "date-time"
+                                                                        },
+                                                                        "updatedAt": {
+                                                                          "type": "string",
+                                                                          "format": "date-time"
+                                                                        },
                                                                         "orderItems": {
                                                                           "type": "object",
                                                                           "properties": {
@@ -25943,17 +25965,6 @@
                                                                             }
                                                                           }
                                                                         },
-                                                                        "orderNumber": {
-                                                                          "type": "string"
-                                                                        },
-                                                                        "createdAt": {
-                                                                          "type": "string",
-                                                                          "format": "date-time"
-                                                                        },
-                                                                        "updatedAt": {
-                                                                          "type": "string",
-                                                                          "format": "date-time"
-                                                                        },
                                                                         "user": {
                                                                           "type": "object",
                                                                           "properties": {
@@ -25970,6 +25981,15 @@
                                                                               }
                                                                             }
                                                                           }
+                                                                        },
+                                                                        "razorpayOrderId": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "razorpayPaymentId": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "razorpaySignature": {
+                                                                          "type": "string"
                                                                         },
                                                                         "createdBy": {
                                                                           "type": "object",
@@ -28547,6 +28567,14 @@
                                                                     "attributes": {
                                                                       "type": "object",
                                                                       "properties": {
+                                                                        "createdAt": {
+                                                                          "type": "string",
+                                                                          "format": "date-time"
+                                                                        },
+                                                                        "updatedAt": {
+                                                                          "type": "string",
+                                                                          "format": "date-time"
+                                                                        },
                                                                         "orderItems": {
                                                                           "type": "object",
                                                                           "properties": {
@@ -28806,17 +28834,6 @@
                                                                             }
                                                                           }
                                                                         },
-                                                                        "orderNumber": {
-                                                                          "type": "string"
-                                                                        },
-                                                                        "createdAt": {
-                                                                          "type": "string",
-                                                                          "format": "date-time"
-                                                                        },
-                                                                        "updatedAt": {
-                                                                          "type": "string",
-                                                                          "format": "date-time"
-                                                                        },
                                                                         "user": {
                                                                           "type": "object",
                                                                           "properties": {
@@ -28833,6 +28850,15 @@
                                                                               }
                                                                             }
                                                                           }
+                                                                        },
+                                                                        "razorpayOrderId": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "razorpayPaymentId": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "razorpaySignature": {
+                                                                          "type": "string"
                                                                         },
                                                                         "createdBy": {
                                                                           "type": "object",
@@ -31005,6 +31031,14 @@
                                                                                                 "attributes": {
                                                                                                   "type": "object",
                                                                                                   "properties": {
+                                                                                                    "createdAt": {
+                                                                                                      "type": "string",
+                                                                                                      "format": "date-time"
+                                                                                                    },
+                                                                                                    "updatedAt": {
+                                                                                                      "type": "string",
+                                                                                                      "format": "date-time"
+                                                                                                    },
                                                                                                     "orderItems": {
                                                                                                       "type": "object",
                                                                                                       "properties": {
@@ -31264,17 +31298,6 @@
                                                                                                         }
                                                                                                       }
                                                                                                     },
-                                                                                                    "orderNumber": {
-                                                                                                      "type": "string"
-                                                                                                    },
-                                                                                                    "createdAt": {
-                                                                                                      "type": "string",
-                                                                                                      "format": "date-time"
-                                                                                                    },
-                                                                                                    "updatedAt": {
-                                                                                                      "type": "string",
-                                                                                                      "format": "date-time"
-                                                                                                    },
                                                                                                     "user": {
                                                                                                       "type": "object",
                                                                                                       "properties": {
@@ -31291,6 +31314,15 @@
                                                                                                           }
                                                                                                         }
                                                                                                       }
+                                                                                                    },
+                                                                                                    "razorpayOrderId": {
+                                                                                                      "type": "string"
+                                                                                                    },
+                                                                                                    "razorpayPaymentId": {
+                                                                                                      "type": "string"
+                                                                                                    },
+                                                                                                    "razorpaySignature": {
+                                                                                                      "type": "string"
                                                                                                     },
                                                                                                     "createdBy": {
                                                                                                       "type": "object",
@@ -34566,6 +34598,14 @@
                                 "attributes": {
                                   "type": "object",
                                   "properties": {
+                                    "createdAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
+                                    "updatedAt": {
+                                      "type": "string",
+                                      "format": "date-time"
+                                    },
                                     "orderItems": {
                                       "type": "object",
                                       "properties": {
@@ -34825,17 +34865,6 @@
                                         }
                                       }
                                     },
-                                    "orderNumber": {
-                                      "type": "string"
-                                    },
-                                    "createdAt": {
-                                      "type": "string",
-                                      "format": "date-time"
-                                    },
-                                    "updatedAt": {
-                                      "type": "string",
-                                      "format": "date-time"
-                                    },
                                     "user": {
                                       "type": "object",
                                       "properties": {
@@ -34852,6 +34881,15 @@
                                           }
                                         }
                                       }
+                                    },
+                                    "razorpayOrderId": {
+                                      "type": "string"
+                                    },
+                                    "razorpayPaymentId": {
+                                      "type": "string"
+                                    },
+                                    "razorpaySignature": {
+                                      "type": "string"
                                     },
                                     "createdBy": {
                                       "type": "object",
@@ -37224,6 +37262,14 @@
                                                                     "attributes": {
                                                                       "type": "object",
                                                                       "properties": {
+                                                                        "createdAt": {
+                                                                          "type": "string",
+                                                                          "format": "date-time"
+                                                                        },
+                                                                        "updatedAt": {
+                                                                          "type": "string",
+                                                                          "format": "date-time"
+                                                                        },
                                                                         "orderItems": {
                                                                           "type": "object",
                                                                           "properties": {
@@ -37483,17 +37529,6 @@
                                                                             }
                                                                           }
                                                                         },
-                                                                        "orderNumber": {
-                                                                          "type": "string"
-                                                                        },
-                                                                        "createdAt": {
-                                                                          "type": "string",
-                                                                          "format": "date-time"
-                                                                        },
-                                                                        "updatedAt": {
-                                                                          "type": "string",
-                                                                          "format": "date-time"
-                                                                        },
                                                                         "user": {
                                                                           "type": "object",
                                                                           "properties": {
@@ -37510,6 +37545,15 @@
                                                                               }
                                                                             }
                                                                           }
+                                                                        },
+                                                                        "razorpayOrderId": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "razorpayPaymentId": {
+                                                                          "type": "string"
+                                                                        },
+                                                                        "razorpaySignature": {
+                                                                          "type": "string"
                                                                         },
                                                                         "createdBy": {
                                                                           "type": "object",
@@ -40292,178 +40336,6 @@
       }
     },
     "/order-details": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/OrderDetailListResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Order-detail"
-        ],
-        "parameters": [
-          {
-            "name": "sort",
-            "in": "query",
-            "description": "Sort by attributes ascending (asc) or descending (desc)",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "pagination[withCount]",
-            "in": "query",
-            "description": "Return page/pageSize (default: true)",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "pagination[page]",
-            "in": "query",
-            "description": "Page number (default: 0)",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "pagination[pageSize]",
-            "in": "query",
-            "description": "Page size (default: 25)",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "pagination[start]",
-            "in": "query",
-            "description": "Offset value (default: 0)",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "pagination[limit]",
-            "in": "query",
-            "description": "Number of entities to return (default: 25)",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "integer"
-            }
-          },
-          {
-            "name": "fields",
-            "in": "query",
-            "description": "Fields to return (ex: title,author)",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "populate",
-            "in": "query",
-            "description": "Relations to return",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filters",
-            "in": "query",
-            "description": "Filters to apply",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "object",
-              "additionalProperties": true
-            },
-            "style": "deepObject"
-          },
-          {
-            "name": "locale",
-            "in": "query",
-            "description": "Locale to apply",
-            "deprecated": false,
-            "required": false,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "operationId": "get/order-details"
-      },
       "post": {
         "responses": {
           "200": {
@@ -40544,87 +40416,7 @@
         }
       }
     },
-    "/order-details/{id}": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/OrderDetailResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Order-detail"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "operationId": "get/order-details/{id}"
-      },
+    "/order-details/{id}/payment": {
       "put": {
         "responses": {
           "200": {
@@ -40703,7 +40495,7 @@
             }
           }
         ],
-        "operationId": "put/order-details/{id}",
+        "operationId": "put/order-details/{id}/payment",
         "requestBody": {
           "required": true,
           "content": {
@@ -40714,87 +40506,6 @@
             }
           }
         }
-      },
-      "delete": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "integer",
-                  "format": "int64"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not Found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "Order-detail"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "operationId": "delete/order-details/{id}"
       }
     },
     "/order-items": {

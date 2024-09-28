@@ -1003,9 +1003,10 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     orderItems: Attribute.Relation<
       'api::order-detail.order-detail',
       'oneToMany',
@@ -1033,14 +1034,14 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
       'oneToOne',
       'api::payment-detail.payment-detail'
     >;
-    orderNumber: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
     user: Attribute.Relation<
       'api::order-detail.order-detail',
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    razorpayOrderId: Attribute.Text;
+    razorpayPaymentId: Attribute.Text;
+    razorpaySignature: Attribute.Text;
     createdBy: Attribute.Relation<
       'api::order-detail.order-detail',
       'oneToOne',
