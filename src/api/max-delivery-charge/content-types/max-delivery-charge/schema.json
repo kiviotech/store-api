@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "max_delivery_charges",
+  "info": {
+    "singularName": "max-delivery-charge",
+    "pluralName": "max-delivery-charges",
+    "displayName": "set_max_delivery_charge"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "max_delivery_charge": {
+      "type": "integer"
+    }
+  }
+}

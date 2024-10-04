@@ -8,10 +8,15 @@
     "description": "Individual items in a user's shopping cart"
   },
   "options": {
-    "draftAndPublish": false,
-    "comment": ""
+    "draftAndPublish": false
   },
   "attributes": {
+    "createdAt": {
+      "type": "datetime"
+    },
+    "updatedAt": {
+      "type": "datetime"
+    },
     "cart": {
       "type": "relation",
       "relation": "manyToOne",
@@ -37,12 +42,6 @@
       "type": "decimal",
       "required": true,
       "min": 0
-    },
-    "createdAt": {
-      "type": "datetime"
-    },
-    "updatedAt": {
-      "type": "datetime"
     }
   }
 }

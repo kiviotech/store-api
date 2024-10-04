@@ -71,21 +71,23 @@
       "target": "api::address.address",
       "mappedBy": "user"
     },
-    "cart": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::cart.cart"
-    },
     "wishlist": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::wishlist.wishlist"
+      "target": "api::wishlist.wishlist",
+      "inversedBy": "user"
     },
     "orders": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::order-detail.order-detail",
       "mappedBy": "user"
+    },
+    "cart": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart.cart",
+      "inversedBy": "users_permissions_user"
     }
   }
 }

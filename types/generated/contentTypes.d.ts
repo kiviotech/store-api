@@ -728,11 +728,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::address.address'
     >;
-    cart: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::cart.cart'
-    >;
     wishlist: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
@@ -742,6 +737,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'oneToMany',
       'api::order-detail.order-detail'
+    >;
+    cart: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::cart.cart'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -900,9 +900,10 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     cart: Attribute.Relation<
       'api::cart-item.cart-item',
       'manyToOne',
@@ -934,8 +935,6 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
         },
         number
       >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::cart-item.cart-item',
       'oneToOne',
@@ -976,6 +975,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::product.product'
     >;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    isThisPopularCategory: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -994,6 +994,70 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomeBannerHomeBanner extends Schema.CollectionType {
+  collectionName: 'home_banners';
+  info: {
+    singularName: 'home-banner';
+    pluralName: 'home-banners';
+    displayName: 'homeBanner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bannerImage: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-banner.home-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-banner.home-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMaxDeliveryChargeMaxDeliveryCharge
+  extends Schema.CollectionType {
+  collectionName: 'max_delivery_charges';
+  info: {
+    singularName: 'max-delivery-charge';
+    pluralName: 'max-delivery-charges';
+    displayName: 'set_max_delivery_charge';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    max_delivery_charge: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::max-delivery-charge.max-delivery-charge',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::max-delivery-charge.max-delivery-charge',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
   collectionName: 'order_details';
   info: {
@@ -1004,9 +1068,10 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     orderItems: Attribute.Relation<
       'api::order-detail.order-detail',
       'oneToMany',
@@ -1034,14 +1099,14 @@ export interface ApiOrderDetailOrderDetail extends Schema.CollectionType {
       'oneToOne',
       'api::payment-detail.payment-detail'
     >;
-    orderNumber: Attribute.String & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
     user: Attribute.Relation<
       'api::order-detail.order-detail',
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    razorpayOrderId: Attribute.Text;
+    razorpayPaymentId: Attribute.Text;
+    razorpaySignature: Attribute.Text;
     createdBy: Attribute.Relation<
       'api::order-detail.order-detail',
       'oneToOne',
@@ -1190,7 +1255,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    description: Attribute.Text;
+    descript: Attribute.Text;
     summary: Attribute.Text;
     price: Attribute.Decimal &
       Attribute.Required &
@@ -1200,7 +1265,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         },
         number
       >;
-    cover: Attribute.Media<'images'> & Attribute.Required;
+    cover: Attribute.Media<'images', true> & Attribute.Required;
     category: Attribute.Relation<
       'api::product.product',
       'manyToOne',
@@ -1222,15 +1287,18 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product-sku.product-sku'
     >;
     slug: Attribute.UID<'api::product.product', 'name'>;
-    wishlists: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::wishlist.wishlist'
-    >;
     ratingsCount: Attribute.String;
     rating: Attribute.Integer;
     topReview: Attribute.Text;
     demoVideo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    wishlist_items: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::wishlist-item.wishlist-item'
+    >;
+    description: Attribute.Blocks;
+    delivery_charge: Attribute.String;
+    productDemoVideo: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1402,16 +1470,20 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
-    products: Attribute.Relation<
-      'api::wishlist.wishlist',
-      'manyToMany',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    user: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    wishlist_items: Attribute.Relation<
+      'api::wishlist.wishlist',
+      'oneToMany',
+      'api::wishlist-item.wishlist-item'
+    >;
     createdBy: Attribute.Relation<
       'api::wishlist.wishlist',
       'oneToOne',
@@ -1420,6 +1492,47 @@ export interface ApiWishlistWishlist extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::wishlist.wishlist',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWishlistItemWishlistItem extends Schema.CollectionType {
+  collectionName: 'wishlist_items';
+  info: {
+    singularName: 'wishlist-item';
+    pluralName: 'wishlist-items';
+    displayName: 'Wishlist Item';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    wishlist: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
+      'manyToOne',
+      'api::wishlist.wishlist'
+    >;
+    total: Attribute.String;
+    product: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
+      'manyToOne',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
       'oneToOne',
       'admin::user'
     > &
@@ -1449,6 +1562,8 @@ declare module '@strapi/types' {
       'api::cart.cart': ApiCartCart;
       'api::cart-item.cart-item': ApiCartItemCartItem;
       'api::category.category': ApiCategoryCategory;
+      'api::home-banner.home-banner': ApiHomeBannerHomeBanner;
+      'api::max-delivery-charge.max-delivery-charge': ApiMaxDeliveryChargeMaxDeliveryCharge;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::payment-detail.payment-detail': ApiPaymentDetailPaymentDetail;
@@ -1457,6 +1572,7 @@ declare module '@strapi/types' {
       'api::product-sku.product-sku': ApiProductSkuProductSku;
       'api::subcategory.subcategory': ApiSubcategorySubcategory;
       'api::wishlist.wishlist': ApiWishlistWishlist;
+      'api::wishlist-item.wishlist-item': ApiWishlistItemWishlistItem;
     }
   }
 }

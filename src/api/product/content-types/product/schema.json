@@ -16,7 +16,7 @@
       "type": "string",
       "required": true
     },
-    "description": {
+    "descript": {
       "type": "text"
     },
     "summary": {
@@ -29,7 +29,7 @@
     },
     "cover": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "allowedTypes": [
         "images"
@@ -63,12 +63,6 @@
       "type": "uid",
       "targetField": "name"
     },
-    "wishlists": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::wishlist.wishlist",
-      "mappedBy": "products"
-    },
     "ratingsCount": {
       "type": "string"
     },
@@ -79,14 +73,30 @@
       "type": "text"
     },
     "demoVideo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "wishlist_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::wishlist-item.wishlist-item",
+      "mappedBy": "product"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "delivery_charge": {
+      "type": "string"
+    },
+    "productDemoVideo": {
+      "type": "text"
     }
   }
 }
