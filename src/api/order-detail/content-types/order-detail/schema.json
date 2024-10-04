@@ -8,10 +8,15 @@
     "description": "Details of customer orders"
   },
   "options": {
-    "draftAndPublish": false,
-    "comment": ""
+    "draftAndPublish": false
   },
   "attributes": {
+    "createdAt": {
+      "type": "datetime"
+    },
+    "updatedAt": {
+      "type": "datetime"
+    },
     "orderItems": {
       "type": "relation",
       "relation": "oneToMany",
@@ -45,21 +50,20 @@
       "target": "api::payment-detail.payment-detail",
       "inversedBy": "orderDetail"
     },
-    "orderNumber": {
-      "type": "string",
-      "unique": true
-    },
-    "createdAt": {
-      "type": "datetime"
-    },
-    "updatedAt": {
-      "type": "datetime"
-    },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "orders"
+    },
+    "razorpayOrderId": {
+      "type": "text"
+    },
+    "razorpayPaymentId": {
+      "type": "text"
+    },
+    "razorpaySignature": {
+      "type": "text"
     }
   }
 }
