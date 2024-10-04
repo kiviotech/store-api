@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "product": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::product.product",
-      "inversedBy": "wishlist_item"
-    },
     "wishlist": {
       "type": "relation",
       "relation": "manyToOne",
@@ -26,6 +20,12 @@
     },
     "total": {
       "type": "string"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "inversedBy": "wishlist_items"
     }
   }
 }

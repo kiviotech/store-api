@@ -975,6 +975,7 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'api::product.product'
     >;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    isThisPopularCategory: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -986,6 +987,70 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomeBannerHomeBanner extends Schema.CollectionType {
+  collectionName: 'home_banners';
+  info: {
+    singularName: 'home-banner';
+    pluralName: 'home-banners';
+    displayName: 'homeBanner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bannerImage: Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-banner.home-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-banner.home-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiMaxDeliveryChargeMaxDeliveryCharge
+  extends Schema.CollectionType {
+  collectionName: 'max_delivery_charges';
+  info: {
+    singularName: 'max-delivery-charge';
+    pluralName: 'max-delivery-charges';
+    displayName: 'set_max_delivery_charge';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    max_delivery_charge: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::max-delivery-charge.max-delivery-charge',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::max-delivery-charge.max-delivery-charge',
       'oneToOne',
       'admin::user'
     > &
@@ -1189,7 +1254,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    description: Attribute.Text;
+    descript: Attribute.Text;
     summary: Attribute.Text;
     price: Attribute.Decimal &
       Attribute.Required &
@@ -1199,7 +1264,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         },
         number
       >;
-    cover: Attribute.Media<'images'> & Attribute.Required;
+    cover: Attribute.Media<'images', true> & Attribute.Required;
     category: Attribute.Relation<
       'api::product.product',
       'manyToOne',
@@ -1225,11 +1290,14 @@ export interface ApiProductProduct extends Schema.CollectionType {
     rating: Attribute.Integer;
     topReview: Attribute.Text;
     demoVideo: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    wishlist_item: Attribute.Relation<
+    wishlist_items: Attribute.Relation<
       'api::product.product',
-      'oneToOne',
+      'oneToMany',
       'api::wishlist-item.wishlist-item'
     >;
+    description: Attribute.Blocks;
+    delivery_charge: Attribute.String;
+    productDemoVideo: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1442,17 +1510,17 @@ export interface ApiWishlistItemWishlistItem extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    product: Attribute.Relation<
-      'api::wishlist-item.wishlist-item',
-      'oneToOne',
-      'api::product.product'
-    >;
     wishlist: Attribute.Relation<
       'api::wishlist-item.wishlist-item',
       'manyToOne',
       'api::wishlist.wishlist'
     >;
     total: Attribute.String;
+    product: Attribute.Relation<
+      'api::wishlist-item.wishlist-item',
+      'manyToOne',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1493,6 +1561,8 @@ declare module '@strapi/types' {
       'api::cart.cart': ApiCartCart;
       'api::cart-item.cart-item': ApiCartItemCartItem;
       'api::category.category': ApiCategoryCategory;
+      'api::home-banner.home-banner': ApiHomeBannerHomeBanner;
+      'api::max-delivery-charge.max-delivery-charge': ApiMaxDeliveryChargeMaxDeliveryCharge;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
       'api::order-item.order-item': ApiOrderItemOrderItem;
       'api::payment-detail.payment-detail': ApiPaymentDetailPaymentDetail;
