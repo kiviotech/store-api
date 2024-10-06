@@ -6,7 +6,7 @@ module.exports = ({ env }) => [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://store.dhairyawanhsc.com/','http://localhost:3032','*'], // Add your Angular app URLs here
+      origin: ['https://store.dhairyawanhsc.com/','http://localhost:8081','*'], // Add your Angular app URLs here
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     },
   },

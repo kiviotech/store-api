@@ -1255,7 +1255,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String & Attribute.Required;
-    descript: Attribute.Text;
     summary: Attribute.Text;
     price: Attribute.Decimal &
       Attribute.Required &
@@ -1299,6 +1298,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
     description: Attribute.Blocks;
     delivery_charge: Attribute.String;
     productDemoVideo: Attribute.Text;
+    related_products: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -16,9 +16,6 @@
       "type": "string",
       "required": true
     },
-    "descript": {
-      "type": "text"
-    },
     "summary": {
       "type": "text"
     },
@@ -97,6 +94,11 @@
     },
     "productDemoVideo": {
       "type": "text"
+    },
+    "related_products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
     }
   }
 }
