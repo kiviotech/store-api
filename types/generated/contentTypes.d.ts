@@ -1132,9 +1132,10 @@ export interface ApiOrderItemOrderItem extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     orderDetail: Attribute.Relation<
       'api::order-item.order-item',
       'manyToOne',
@@ -1174,8 +1175,6 @@ export interface ApiOrderItemOrderItem extends Schema.CollectionType {
         },
         number
       >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::order-item.order-item',
       'oneToOne',
@@ -1302,6 +1301,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'oneToMany',
       'api::product.product'
+    >;
+    order_items: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::order-item.order-item'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

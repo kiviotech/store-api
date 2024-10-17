@@ -8,10 +8,15 @@
     "description": "Individual items within an order"
   },
   "options": {
-    "draftAndPublish": false,
-    "comment": ""
+    "draftAndPublish": false
   },
   "attributes": {
+    "createdAt": {
+      "type": "datetime"
+    },
+    "updatedAt": {
+      "type": "datetime"
+    },
     "orderDetail": {
       "type": "relation",
       "relation": "manyToOne",
@@ -21,7 +26,8 @@
     "product": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::product.product"
+      "target": "api::product.product",
+      "inversedBy": "order_items"
     },
     "productSku": {
       "type": "relation",
@@ -42,12 +48,6 @@
       "type": "decimal",
       "required": true,
       "min": 0
-    },
-    "createdAt": {
-      "type": "datetime"
-    },
-    "updatedAt": {
-      "type": "datetime"
     }
   }
 }
