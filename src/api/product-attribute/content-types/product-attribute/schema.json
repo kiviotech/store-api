@@ -29,12 +29,6 @@
       "relation": "manyToOne",
       "target": "api::product.product",
       "inversedBy": "productAttributes"
-    },
-    "productSkus": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-sku.product-sku",
-      "inversedBy": "attributes"
     }
   }
 }

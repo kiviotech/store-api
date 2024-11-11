@@ -26,12 +26,6 @@
       "target": "api::subcategory.subcategory",
       "mappedBy": "parentCategory"
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "category"
-    },
     "cover": {
       "type": "media",
       "multiple": false,
@@ -45,6 +39,12 @@
     },
     "isThisPopularCategory": {
       "type": "boolean"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "categories"
     }
   }
 }

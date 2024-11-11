@@ -743,6 +743,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::cart.cart'
     >;
+    userType: Attribute.Enumeration<['admin', 'normal']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -969,13 +970,13 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'oneToMany',
       'api::subcategory.subcategory'
     >;
-    products: Attribute.Relation<
-      'api::category.category',
-      'oneToMany',
-      'api::product.product'
-    >;
     cover: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     isThisPopularCategory: Attribute.Boolean;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1200,9 +1201,10 @@ export interface ApiPaymentDetailPaymentDetail extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
     orderDetail: Attribute.Relation<
       'api::payment-detail.payment-detail',
       'oneToOne',
@@ -1216,16 +1218,14 @@ export interface ApiPaymentDetailPaymentDetail extends Schema.CollectionType {
         },
         number
       >;
-    provider: Attribute.String & Attribute.Required;
     status: Attribute.Enumeration<
       ['pending', 'completed', 'failed', 'refunded']
     > &
       Attribute.DefaultTo<'pending'>;
-    transactionId: Attribute.String & Attribute.Unique;
-    paymentMethod: Attribute.String;
     paymentDate: Attribute.DateTime;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
+    razorpay_order_id: Attribute.String;
+    razorpay_payment_id: Attribute.String;
+    razorpay_signature: Attribute.String;
     createdBy: Attribute.Relation<
       'api::payment-detail.payment-detail',
       'oneToOne',
@@ -1264,9 +1264,9 @@ export interface ApiProductProduct extends Schema.CollectionType {
         number
       >;
     cover: Attribute.Media<'images', true> & Attribute.Required;
-    category: Attribute.Relation<
+    categories: Attribute.Relation<
       'api::product.product',
-      'manyToOne',
+      'manyToMany',
       'api::category.category'
     >;
     subCategories: Attribute.Relation<
@@ -1278,11 +1278,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'oneToMany',
       'api::product-attribute.product-attribute'
-    >;
-    productSkus: Attribute.Relation<
-      'api::product.product',
-      'oneToMany',
-      'api::product-sku.product-sku'
     >;
     slug: Attribute.UID<'api::product.product', 'name'>;
     ratingsCount: Attribute.String;
@@ -1306,6 +1301,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'oneToMany',
       'api::order-item.order-item'
+    >;
+    productSkus: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::product-sku.product-sku'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1346,11 +1346,6 @@ export interface ApiProductAttributeProductAttribute
       'manyToOne',
       'api::product.product'
     >;
-    productSkus: Attribute.Relation<
-      'api::product-attribute.product-attribute',
-      'manyToMany',
-      'api::product-sku.product-sku'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1378,35 +1373,19 @@ export interface ApiProductSkuProductSku extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    comment: '';
   };
   attributes: {
     sku: Attribute.String & Attribute.Required & Attribute.Unique;
-    price: Attribute.Decimal &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
-    quantity: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 0;
-        },
-        number
-      >;
     product: Attribute.Relation<
       'api::product-sku.product-sku',
-      'manyToOne',
+      'oneToOne',
       'api::product.product'
     >;
-    attributes: Attribute.Relation<
+    quantity: Attribute.Integer;
+    order_items: Attribute.Relation<
       'api::product-sku.product-sku',
-      'manyToMany',
-      'api::product-attribute.product-attribute'
+      'oneToMany',
+      'api::order-item.order-item'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

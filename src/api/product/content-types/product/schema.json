@@ -32,9 +32,9 @@
         "images"
       ]
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "products"
     },
@@ -48,12 +48,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product-attribute.product-attribute",
-      "mappedBy": "product"
-    },
-    "productSkus": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product-sku.product-sku",
       "mappedBy": "product"
     },
     "slug": {
@@ -105,6 +99,12 @@
       "relation": "oneToMany",
       "target": "api::order-item.order-item",
       "mappedBy": "product"
+    },
+    "productSkus": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product-sku.product-sku",
+      "inversedBy": "product"
     }
   }
 }

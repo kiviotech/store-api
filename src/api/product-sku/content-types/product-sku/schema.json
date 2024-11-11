@@ -8,8 +8,7 @@
     "description": "Stock Keeping Units for product variations"
   },
   "options": {
-    "draftAndPublish": false,
-    "comment": ""
+    "draftAndPublish": false
   },
   "attributes": {
     "sku": {
@@ -17,27 +16,20 @@
       "required": true,
       "unique": true
     },
-    "price": {
-      "type": "decimal",
-      "required": true,
-      "min": 0
-    },
-    "quantity": {
-      "type": "integer",
-      "required": true,
-      "min": 0
-    },
     "product": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "oneToOne",
       "target": "api::product.product",
-      "inversedBy": "productSkus"
+      "mappedBy": "productSkus"
     },
-    "attributes": {
+    "quantity": {
+      "type": "integer"
+    },
+    "order_items": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product-attribute.product-attribute",
-      "inversedBy": "productSkus"
+      "relation": "oneToMany",
+      "target": "api::order-item.order-item",
+      "mappedBy": "productSku"
     }
   }
 }

@@ -1,6 +1,4 @@
 'use strict';
-
-
 const Razorpay = require('razorpay');
 const crypto = require('crypto');
 

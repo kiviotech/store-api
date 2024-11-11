@@ -88,6 +88,13 @@
       "relation": "oneToOne",
       "target": "api::cart.cart",
       "inversedBy": "users_permissions_user"
+    },
+    "userType": {
+      "type": "enumeration",
+      "enum": [
+        "admin",
+        "normal"
+      ]
     }
   }
 }

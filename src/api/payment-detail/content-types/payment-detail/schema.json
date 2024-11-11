@@ -8,10 +8,15 @@
     "description": "Details of payments associated with orders"
   },
   "options": {
-    "draftAndPublish": false,
-    "comment": ""
+    "draftAndPublish": false
   },
   "attributes": {
+    "createdAt": {
+      "type": "datetime"
+    },
+    "updatedAt": {
+      "type": "datetime"
+    },
     "orderDetail": {
       "type": "relation",
       "relation": "oneToOne",
@@ -23,10 +28,6 @@
       "required": true,
       "min": 0
     },
-    "provider": {
-      "type": "string",
-      "required": true
-    },
     "status": {
       "type": "enumeration",
       "enum": [
@@ -37,21 +38,17 @@
       ],
       "default": "pending"
     },
-    "transactionId": {
-      "type": "string",
-      "unique": true
-    },
-    "paymentMethod": {
-      "type": "string"
-    },
     "paymentDate": {
       "type": "datetime"
     },
-    "createdAt": {
-      "type": "datetime"
+    "razorpay_order_id": {
+      "type": "string"
     },
-    "updatedAt": {
-      "type": "datetime"
+    "razorpay_payment_id": {
+      "type": "string"
+    },
+    "razorpay_signature": {
+      "type": "string"
     }
   }
 }

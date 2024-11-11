@@ -32,7 +32,8 @@
     "productSku": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::product-sku.product-sku"
+      "target": "api::product-sku.product-sku",
+      "inversedBy": "order_items"
     },
     "quantity": {
       "type": "integer",
