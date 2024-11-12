@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "internationl_users",
+  "info": {
+    "singularName": "internationl-user",
+    "pluralName": "internationl-users",
+    "displayName": "Internationl_user",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user_details": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "cart": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart.cart"
+    },
+    "loaction": {
+      "type": "string"
+    }
+  }
+}

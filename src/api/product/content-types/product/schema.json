@@ -105,6 +105,9 @@
       "relation": "oneToOne",
       "target": "api::product-sku.product-sku",
       "inversedBy": "product"
+    },
+    "internationalPrice": {
+      "type": "integer"
     }
   }
 }

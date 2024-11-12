@@ -1028,6 +1028,47 @@ export interface ApiHomeBannerHomeBanner extends Schema.CollectionType {
   };
 }
 
+export interface ApiInternationlUserInternationlUser
+  extends Schema.CollectionType {
+  collectionName: 'internationl_users';
+  info: {
+    singularName: 'internationl-user';
+    pluralName: 'internationl-users';
+    displayName: 'Internationl_user';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user_details: Attribute.Relation<
+      'api::internationl-user.internationl-user',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    cart: Attribute.Relation<
+      'api::internationl-user.internationl-user',
+      'oneToOne',
+      'api::cart.cart'
+    >;
+    loaction: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::internationl-user.internationl-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::internationl-user.internationl-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMaxDeliveryChargeMaxDeliveryCharge
   extends Schema.CollectionType {
   collectionName: 'max_delivery_charges';
@@ -1307,6 +1348,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToOne',
       'api::product-sku.product-sku'
     >;
+    internationalPrice: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1550,6 +1592,7 @@ declare module '@strapi/types' {
       'api::cart-item.cart-item': ApiCartItemCartItem;
       'api::category.category': ApiCategoryCategory;
       'api::home-banner.home-banner': ApiHomeBannerHomeBanner;
+      'api::internationl-user.internationl-user': ApiInternationlUserInternationlUser;
       'api::max-delivery-charge.max-delivery-charge': ApiMaxDeliveryChargeMaxDeliveryCharge;
       'api::order-detail.order-detail': ApiOrderDetailOrderDetail;
       'api::order-item.order-item': ApiOrderItemOrderItem;
