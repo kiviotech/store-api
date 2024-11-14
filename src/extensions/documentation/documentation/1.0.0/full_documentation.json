@@ -14,8 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-12T14:34:23.668Z"
-    "x-generation-date": "2024-11-13T08:21:30.889Z"
+    "x-generation-date": "2024-11-14T06:25:25.708Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -26,7 +25,7 @@
   },
   "servers": [
     {
-      "url": "https://store.dhairyawanhsc.com/dash/api",
+      "url": "http://localhost:1337/api",
       "description": "Development server"
     }
   ],
