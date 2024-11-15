@@ -1,19 +1,21 @@
 module.exports = () => ({
   email: {
     config: {
-      provider: "strapi-provider-email-sendgrid", // Ensure the correct package name
+      provider: '@strapi/provider-email-nodemailer',
       providerOptions: {
-        apiKey: "50f83f65abd3f91cee4a531874d41e00", // Replace with your actual SendGrid API key
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        auth: {
+          user: process.env.SMTP_USERNAME,
+          pass: process.env.SMTP_PASSWORD,
+        },
       },
       settings: {
-        defaultFrom: "juliasedefdjian@strapi.io",
-        defaultReplyTo: "juliasedefdjian@strapi.io",
-        testAddress: "juliasedefdjian@strapi.io",
+        defaultFrom: process.env.SMTP_FROM,
+        defaultReplyTo: process.env.SMTP_REPLY_TO,
       },
     },
   },
-
-  
   upload: {
     config: {
       sizeLimit: 2500 * 1024 * 1024, // 256 MB in bytes
