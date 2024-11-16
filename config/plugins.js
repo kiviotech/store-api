@@ -1,32 +1,36 @@
-module.exports = () => ({
+module.exports = ({ env }) => ({
   email: {
     config: {
-      provider: "strapi-provider-email-sendgrid", // Ensure the correct package name
+      provider: "@strapi/provider-email-nodemailer",
       providerOptions: {
-        apiKey: "50f83f65abd3f91cee4a531874d41e00", // Replace with your actual SendGrid API key
+        host: env("SMTP_HOST"),
+        port: env("SMTP_PORT"),
+        auth: {
+          user: env("SMTP_USERNAME"),
+          pass: env("SMTP_PASSWORD"),
+        },
       },
       settings: {
-        defaultFrom: "juliasedefdjian@strapi.io",
-        defaultReplyTo: "juliasedefdjian@strapi.io",
-        testAddress: "juliasedefdjian@strapi.io",
+        defaultFrom: env("SMTP_FROM"),
+        defaultReplyTo: env("SMTP_REPLY_TO"),
       },
     },
   },
-
-  
   upload: {
     config: {
-      sizeLimit: 2500 * 1024 * 1024, // 256 MB in bytes
+      sizeLimit: 256 * 1024 * 1024, // 256 MB in bytes
     },
-  },
-  bootstrap({ strapi }) {
-    strapi.server.httpServer.requestTimeout = 30 * 60 * 1000; // Set request timeout to 30 minutes
   },
   "users-permissions": {
     config: {
       jwt: {
-        expiresIn: "7d",
+        expiresIn: "7d", // Set token expiration to 1 minute for testing
       },
     },
   },
 });
+
+// Set the server request timeout
+module.exports.bootstrap = ({ strapi }) => {
+  strapi.server.httpServer.requestTimeout = 30 * 60 * 1000; // 30 minutes
+};

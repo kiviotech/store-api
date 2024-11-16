@@ -6,7 +6,7 @@ module.exports = ({ env }) => [
   {
     name: 'strapi::cors',
     config: {
-      origin: ['https://store.dhairyawanhsc.com/','http://localhost:8081','*'],
+      origin: ['https://store.dhairyawanhsc.com/','http://localhost:8082','*'],
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     },
   },
