@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "send_otps",
+  "info": {
+    "singularName": "send-otp",
+    "pluralName": "send-otps",
+    "displayName": "Send OTP"
+  },
+  "attributes": {
+    "phoneNumber": {
+      "type": "string"
+    },
+    "otp": {
+      "type": "integer"
+    },
+    "expiry": {
+      "type": "datetime"
+    }
+  }
+}

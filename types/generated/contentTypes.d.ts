@@ -852,6 +852,34 @@ export interface ApiAddressAddress extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthSendOtp extends Schema.CollectionType {
+  collectionName: 'send_otps';
+  info: {
+    singularName: 'send-otp';
+    pluralName: 'send-otps';
+    displayName: 'Send OTP';
+  };
+  attributes: {
+    phoneNumber: Attribute.String;
+    otp: Attribute.Integer;
+    expiry: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::auth.send-otp',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::auth.send-otp',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCartCart extends Schema.CollectionType {
   collectionName: 'carts';
   info: {
@@ -1588,6 +1616,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::i18n.locale': PluginI18NLocale;
       'api::address.address': ApiAddressAddress;
+      'api::auth.send-otp': ApiAuthSendOtp;
       'api::cart.cart': ApiCartCart;
       'api::cart-item.cart-item': ApiCartItemCartItem;
       'api::category.category': ApiCategoryCategory;
