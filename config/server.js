@@ -1,7 +1,7 @@
 module.exports = ({ env }) => ({
   host: env("HOST", "0.0.0.0"),
   port: env.int("PORT", 1337),
- // url: env("PUBLIC_URL", "https://store.dhairyawanhsc.com"), // Base URL for your API
+  url: env("PUBLIC_URL", "https://store.dhairyawanhsc.com"), // Base URL for your API
   admin: {
     url: env("ADMIN_URL", "/dashboard"), // Admin panel path
     auth: {
